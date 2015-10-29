@@ -76,17 +76,10 @@ public class Pala {
     GRectangle posicioPilota = pilota.getEspaiQueOcupa();
     double mig = posicioPilota.getY() + posicioPilota.getHeight()/2;
 
-    if (pilota.getDireccio() == mira) {
-      // La pilota s'allunya
-      if (Math.abs(mig - (imatge.getY() + imatge.getHeight()/2)) > 100) {
-        anarCapA(mig);
-      } else {
-        direccio = 0;
-      }
 
-    } else {
-      anarCapA(mig);
-    }
+    // La pilota s'allunya
+    anarCapA(mig);
+
   }
 
   /**

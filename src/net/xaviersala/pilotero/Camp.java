@@ -1,5 +1,6 @@
 package net.xaviersala.pilotero;
 
+import acm.graphics.GLabel;
 import acm.graphics.GRectangle;
 
 public class Camp {
@@ -17,12 +18,13 @@ public class Camp {
    * @param pala2 pala del costat dret
    * @param pilota pilota
    */
-  public Camp(GRectangle pantalla, Pala pala1, Pala pala2, Pilota pilota) {
+  public Camp(GRectangle pantalla, Pala pala1, Pala pala2, Pilota pilota, GLabel etiqueta) {
     pales[0] = pala1;
     pales[1] = pala2;
     this.pilota = pilota;
-    marcador = new Marcador();
     midaCamp = pantalla;
+    marcador = new Marcador(etiqueta, (int) midaCamp.getWidth());
+
 
   }
 
@@ -78,6 +80,16 @@ public class Camp {
     }
     if (surtPerLaPorteria(posicioPilota)) {
       pilota.canviaDireccioHoritzontal();
+
+
+
+      // És gol!
+      if (pilota.getEspaiQueOcupa().getX() <= midaCamp.getX()) {
+        marcador.marca(1);
+      } else {
+        marcador.marca(0);
+      }
+
       double novaPosicioX = tornaADinsX(posicioPilota);
       pilota.setX(novaPosicioX);
 

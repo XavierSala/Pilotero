@@ -30,12 +30,15 @@ public class App extends GraphicsProgram {
     add(pala1);
     GImage pala2 = new GImage("pala.png");
     add(pala2);
+    GLabel marcador = new GLabel("0 - 0");
+    add(marcador);
 
     // Passa els objectes al camp
     camp = new Camp(mida,
         new Pala(pala1, +1),
         new Pala(pala2, -1),
-        new Pilota(pilota));
+        new Pilota(pilota),
+        marcador );
 
 
 
